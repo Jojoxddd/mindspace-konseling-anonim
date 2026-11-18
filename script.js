@@ -1,3 +1,15 @@
+// Menu navigasi untuk layar kecil.
+const siteHeader = document.querySelector('.header');
+const menuToggle = document.querySelector('.menu-toggle');
+function setMenu(open) {
+  siteHeader.classList.toggle('menu-open', open);
+  menuToggle.setAttribute('aria-expanded', String(open));
+  menuToggle.textContent = open ? 'Tutup' : 'Menu';
+}
+menuToggle.addEventListener('click', () => setMenu(!siteHeader.classList.contains('menu-open')));
+document.querySelectorAll('#site-nav a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
+
 // Semua interaksi berjalan lokal di browser; tidak ada data yang dikirim atau disimpan.
 const form = document.querySelector('#checkin-form');
 const insight = document.querySelector('#insight');
@@ -16,25 +28,31 @@ form.addEventListener('submit', (event) => {
 
 // Cek tingkat stres: berjalan lokal, tidak ada data yang disimpan atau dikirim.
 const QUESTIONS = [
-  { t:'Saya merasa kewalahan oleh jumlah pekerjaan yang harus diselesaikan.' },
-  { t:'Saya sulit berhenti memikirkan pekerjaan di luar jam kerja.' },
-  { t:'Saya merasa tegang atau mudah tersinggung tanpa sebab yang jelas.' },
-  { t:'Saya sulit tidur karena pikiran tentang pekerjaan.' },
-  { t:'Saya merasa lelah secara fisik atau emosional, bahkan setelah beristirahat.' },
-  { t:'Saya sulit berkonsentrasi atau mudah lupa saat bekerja.' },
-  { t:'Tenggat waktu atau target kerja membuat saya merasa tertekan.' },
-  { t:'Saya menjauh dari rekan atau teman karena merasa tidak punya energi.' },
-  { t:'Saya merasa mampu mengendalikan hal-hal penting dalam pekerjaan saya.', rev:true },
-  { t:'Saya punya waktu untuk beristirahat dan melakukan hal yang saya nikmati.', rev:true }
+  { t: 'Saya merasa kewalahan oleh jumlah pekerjaan yang harus diselesaikan.' },
+  { t: 'Saya sulit berhenti memikirkan pekerjaan di luar jam kerja.' },
+  { t: 'Saya merasa tegang atau mudah tersinggung tanpa sebab yang jelas.' },
+  { t: 'Saya sulit tidur karena pikiran tentang pekerjaan.' },
+  { t: 'Saya merasa lelah secara fisik atau emosional, bahkan setelah beristirahat.' },
+  { t: 'Saya sulit berkonsentrasi atau mudah lupa saat bekerja.' },
+  { t: 'Tenggat waktu atau target kerja membuat saya merasa tertekan.' },
+  { t: 'Saya menjauh dari rekan atau teman karena merasa tidak punya energi.' },
+  { t: 'Saya merasa mampu mengendalikan hal-hal penting dalam pekerjaan saya.', rev: true },
+  { t: 'Saya punya waktu untuk beristirahat dan melakukan hal yang saya nikmati.', rev: true }
 ];
-const SCALE = ['Tidak pernah','Jarang','Kadang-kadang','Sering','Hampir selalu'];
+const SCALE = ['Tidak pernah', 'Jarang', 'Kadang-kadang', 'Sering', 'Hampir selalu'];
 const LEVELS = [
-  { max:13, cls:'level-low', title:'Tingkat stres rendah', text:'Tekananmu belakangan ini tampak masih terkendali. Pertahankan hal-hal yang sudah membantumu.',
-    tips:['Jaga jam tidur dan waktu istirahat yang sudah berjalan baik.','Catat apa yang membantumu tetap seimbang, supaya mudah diulang saat sibuk.','Lakukan check-in harian untuk melihat perubahan lebih awal.'] },
-  { max:26, cls:'level-mid', title:'Tingkat stres sedang', text:'Ada tanda tekanan yang mulai terasa. Ini saat yang baik untuk memberi ruang pada dirimu sebelum menumpuk.',
-    tips:['Pilih satu atau dua prioritas hari ini, dan tunda sisanya jika memungkinkan.','Ambil jeda singkat di sela kerja, misalnya berjalan sebentar atau menarik napas dalam.','Ceritakan bebanmu kepada orang yang kamu percaya.'] },
-  { max:40, cls:'level-high', title:'Tingkat stres tinggi', text:'Tekananmu terasa berat belakangan ini, dan kamu tidak perlu menanggungnya sendirian.',
-    tips:['Pertimbangkan berbicara dengan psikolog atau tenaga kesehatan.','Lihat apakah ada beban kerja yang bisa dibagi, ditunda, atau dibicarakan dengan atasan.','Prioritaskan tidur, makan teratur, dan waktu pulih di luar jam kerja.'] }
+  {
+    max: 13, cls: 'level-low', title: 'Tingkat stres rendah', text: 'Tekananmu belakangan ini tampak masih terkendali. Pertahankan hal-hal yang sudah membantumu.',
+    tips: ['Jaga jam tidur dan waktu istirahat yang sudah berjalan baik.', 'Catat apa yang membantumu tetap seimbang, supaya mudah diulang saat sibuk.', 'Lakukan check-in harian untuk melihat perubahan lebih awal.']
+  },
+  {
+    max: 26, cls: 'level-mid', title: 'Tingkat stres sedang', text: 'Ada tanda tekanan yang mulai terasa. Ini saat yang baik untuk memberi ruang pada dirimu sebelum menumpuk.',
+    tips: ['Pilih satu atau dua prioritas hari ini, dan tunda sisanya jika memungkinkan.', 'Ambil jeda singkat di sela kerja, misalnya berjalan sebentar atau menarik napas dalam.', 'Ceritakan bebanmu kepada orang yang kamu percaya.']
+  },
+  {
+    max: 40, cls: 'level-high', title: 'Tingkat stres tinggi', text: 'Tekananmu terasa berat belakangan ini, dan kamu tidak perlu menanggungnya sendirian.',
+    tips: ['Pertimbangkan berbicara dengan psikolog atau tenaga kesehatan.', 'Lihat apakah ada beban kerja yang bisa dibagi, ditunda, atau dibicarakan dengan atasan.', 'Prioritaskan tidur, makan teratur, dan waktu pulih di luar jam kerja.']
+  }
 ];
 const stressForm = document.querySelector('#stress-form');
 const qBox = document.querySelector('#questions');
@@ -49,7 +67,10 @@ QUESTIONS.forEach((q, i) => {
   SCALE.forEach((label, v) => {
     const l = document.createElement('label'); l.className = 'option';
     const inp = document.createElement('input'); inp.type = 'radio'; inp.name = 'q' + i; inp.value = v;
-    const sp = document.createElement('span'); sp.textContent = label;
+    const sp = document.createElement('span');
+    const n = document.createElement('span'); n.className = 'n'; n.setAttribute('aria-hidden', 'true'); n.textContent = v + 1;
+    const tx = document.createElement('span'); tx.className = 't'; tx.textContent = label;
+    sp.append(n, tx);
     l.append(inp, sp); opts.appendChild(l);
   });
   fs.appendChild(opts); qBox.appendChild(fs);
@@ -126,8 +147,8 @@ const chatTyping = document.querySelector('#chat-typing');
 const chatPii = document.querySelector('#chat-pii');
 const chatCrisis = document.querySelector('#chat-crisis');
 const composer = document.querySelector('#composer');
-const WORDS_A = ['Embun','Senja','Fajar','Rimbun','Telaga','Pelangi','Awan','Cemara','Lembayung','Kenanga'];
-const WORDS_B = ['Teduh','Tenang','Lembut','Jernih','Hangat','Sabar','Damai','Syahdu','Sejuk','Tulus'];
+const WORDS_A = ['Embun', 'Senja', 'Fajar', 'Rimbun', 'Telaga', 'Pelangi', 'Awan', 'Cemara', 'Lembayung', 'Kenanga'];
+const WORDS_B = ['Teduh', 'Tenang', 'Lembut', 'Jernih', 'Hangat', 'Sabar', 'Damai', 'Syahdu', 'Sejuk', 'Tulus'];
 const IDLE_MS = 10 * 60 * 1000;
 const GREET = {
   'Stres kerja': 'Halo, selamat datang. Kamu bisa menceritakan tekanan kerja yang sedang kamu rasakan, sebanyak atau sesedikit yang kamu mau.',
@@ -232,7 +253,11 @@ roomForm.addEventListener('submit', (event) => {
   roomError.hidden = true; roomNotice.hidden = true;
   roomStart.hidden = true; roomChat.hidden = false;
   roomCodeChat.textContent = currentCode; roomTopic.textContent = 'Topik: ' + topic;
-  addMsg('them', GREET[topic]); resetIdle(); chatInput.focus();
+  addMsg('them', GREET[topic]); resetIdle();
+  const calmRoom = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelector('#room').scrollIntoView({ behavior: calmRoom ? 'auto' : 'smooth', block: 'start' });
+  // Di layar sentuh, jangan langsung membuka keyboard agar sapaan tetap terlihat.
+  if (!window.matchMedia('(pointer: coarse)').matches) chatInput.focus({ preventScroll: true });
 });
 roomForm.addEventListener('change', () => { roomError.hidden = true; });
 composer.addEventListener('submit', (event) => { event.preventDefault(); trySend(); });
@@ -259,7 +284,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if ('IntersectionObserver' in window && !reduced) {
   const observer = new IntersectionObserver((entries, obs) => entries.forEach(entry => {
     if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
-  }), { threshold:0.08 });
+  }), { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 } else {
   document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
