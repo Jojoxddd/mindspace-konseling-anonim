@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>MindSpace — Ruang untuk bernapas</title>
+  <meta name="description" content="Rancangan halaman MindSpace untuk keseimbangan kerja dan kesehatan emosional.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="prototype"><strong>Prototipe desain.</strong> Check-in hanya simulasi di perangkat ini. Asesmen, konseling, dan perlindungan data belum terhubung ke layanan nyata.</div>
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="#beranda">MindSpace</a>
+      <nav aria-label="Navigasi utama">
+        <a href="#checkin">Check-in Harian</a><a href="#asesmen">Asesmen</a><a href="#konseling">Konseling</a><a href="#privasi">Privasi</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="beranda" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="pill">Identitas Terlindungi · Tanpa Akses HR</span>
+          <h1>Ruang aman untuk menjaga keseimbangan antara tuntutan kerja dan kesehatan emosional.</h1>
+          <p class="lead">Pantau tingkat stres secara mandiri, lakukan check-in harian dalam 10 detik, dan bercerita secara anonim dengan psikolog berlisensi tanpa khawatir diketahui perusahaan.</p>
+          <div class="actions"><a class="button" href="#asesmen">Mulai Asesmen Mandiri <span aria-hidden="true">↗</span></a><a class="button outline" href="#konseling">Konseling Anonim</a></div>
+        </div>
+        <img class="hero-image" src="https://cdn.gamma.app/0xpvvtlhc42z6pu/generated-images/01M7PGJAQ5WVQ8AHERAHRANT14.jpg" alt="Ilustrasi dedaunan hijau sage dalam cahaya lembut">
+      </div>
+    </section>
+    <section class="section reveal" id="checkin">
+      <div class="container">
+        <div class="section-head"><span class="eyebrow">Simulasi check-in · 10 detik</span><h2>Bagaimana keadaanmu hari ini?</h2><p class="lead">Luangkan sejenak untuk melihat hubungan antara beban kerja dan kondisi emosimu.</p></div>
+        <div class="checkin-grid">
+          <form class="panel" id="checkin-form">
+            <fieldset><legend>1. Pilih beban kerja hari ini</legend><div class="options">
+              <label class="option"><input type="radio" name="beban" value="Ringan"><span>Ringan</span></label><label class="option"><input type="radio" name="beban" value="Normal"><span>Normal</span></label><label class="option"><input type="radio" name="beban" value="Padat"><span>Padat</span></label><label class="option"><input type="radio" name="beban" value="Kewalahan"><span>Kewalahan</span></label>
+            </div></fieldset>
+            <fieldset><legend>2. Bagaimana kondisi emosimu?</legend><div class="options">
+              <label class="option"><input type="radio" name="emosi" value="Tenang"><span>Tenang</span></label><label class="option"><input type="radio" name="emosi" value="Fokus"><span>Fokus</span></label><label class="option"><input type="radio" name="emosi" value="Lelah"><span>Lelah</span></label><label class="option"><input type="radio" name="emosi" value="Cemas"><span>Cemas</span></label>
+            </div></fieldset>
+            <button class="button" type="submit">Lihat refleksi</button>
+            <p class="small muted" style="margin:14px 0 0">Pilihan ini tidak disimpan atau dikirim ke server.</p>
+          </form>
+          <div class="panel insight"><span class="eyebrow">Insight harian · ilustrasi</span><blockquote id="insight" aria-live="polite">“Saat pekerjaan terasa padat, coba perhatikan apakah waktu istirahatmu ikut berkurang.”</blockquote><span class="small muted">Catatan refleksi mandiri, bukan penilaian klinis.</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="section reveal" id="asesmen">
+      <div class="container"><hr class="rule"><div class="section-head"><span class="eyebrow">Asesmen mandiri</span><h2>Kenali tekanan sebelum semakin berat</h2><p class="lead">Skrining awal untuk membaca ritme diri, bukan diagnosis medis. Cek tingkat stres kerja sudah bisa dicoba di bawah; tiga asesmen lainnya masih dalam rancangan.</p></div>
+        <div class="grid-four">
+          <article class="tile"><span class="symbol" aria-hidden="true">◷</span><h3>Stres Kerja</h3><p>Tekanan tenggat waktu dan tanggung jawab sehari-hari.</p></article>
+          <article class="tile"><span class="symbol" aria-hidden="true">◒</span><h3>Burnout</h3><p>Kelelahan fisik atau emosional dan menurunnya motivasi.</p></article>
+          <article class="tile"><span class="symbol" aria-hidden="true">⚖</span><h3>Work-Life Balance</h3><p>Batas antara jam kerja dan waktu istirahat pribadi.</p></article>
+          <article class="tile"><span class="symbol" aria-hidden="true">✳</span><h3>Dukungan Sosial</h3><p>Rasa aman dan dukungan di lingkungan kerja.</p></article>
+        </div>
+        <div class="panel quiz" id="cek-stres">
+          <div class="quiz-head">
+            <h3>Cek tingkat stres kerjamu</h3>
+            <p class="muted">10 pernyataan, sekitar 2 menit. Jawab sesuai yang kamu rasakan dalam 4 minggu terakhir. Jawabanmu tidak disimpan atau dikirim ke server.</p>
+          </div>
+          <div class="quiz-start"><button class="button" type="button" id="quiz-start" aria-expanded="false" aria-controls="quiz-body">Mulai cek stres</button></div>
+          <div id="quiz-body" hidden>
+            <div class="quiz-progress"><span id="quiz-count">0 dari 10 terjawab</span><div class="bar"><i id="quiz-bar"></i></div></div>
+            <form id="stress-form" novalidate>
+              <div id="questions"></div>
+              <div class="quiz-actions"><button class="button" type="submit">Lihat hasil</button><button class="button outline" type="button" id="quiz-reset">Ulangi</button></div>
+              <p class="small error" id="quiz-error" role="alert" hidden></p>
+            </form>
+            <div class="quiz-result" id="quiz-result" aria-live="polite" tabindex="-1" hidden></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <section class="section surface reveal" id="konseling">
+      <div class="container split"><div><span class="eyebrow">Konseling anonim</span><h2>Bercerita tanpa harus merasa sungkan</h2><p class="lead">Konseling dirancang sebagai percakapan privat dengan psikolog klinis berlisensi, tanpa rasa takut dihakimi.</p>
+        <ol class="steps"><li>Pilih topik: stres kerja, batas jam kerja, konflik tim, atau masalah pribadi.</li><li>Terhubung menggunakan kode samaran.</li><li>Mulai sesi percakapan privat dengan psikolog.</li></ol>
+        <p class="small muted">Alur ini adalah rancangan. Layanan konseling belum terhubung.</p>
+        <div class="actions"><a class="button" href="#ruang-konseling">Masuk ruang konseling</a></div></div>
+        <img class="counsel-image" src="https://cdn.gamma.app/0xpvvtlhc42z6pu/generated-images/01M7PGJQPA8SKT8RB2D9Q5CV43.jpg" alt="Ilustrasi ruang percakapan yang tenang">
+      </div>
+    </section>
+    <section class="section reveal" id="psikolog"><div class="container"><hr class="rule"><div class="section-head"><span class="eyebrow">Pendekatan</span><h2>Kenali pendekatan psikolog</h2><p class="lead">Profil di bawah ini adalah contoh. Nama dan kredensial akan diisi setelah tersedia dan diverifikasi.</p></div><div class="profiles">
+      <article class="profile"><span class="pill">Profil contoh</span><h3>Stres kerja &amp; CBT</h3><p>Mengenali pola pikir terkait tekanan kerja dan menemukan cara menghadapi tuntutan sehari-hari.</p><p class="small muted">Nama dan kredensial: belum tersedia</p></article>
+      <article class="profile"><span class="pill">Profil contoh</span><h3>Pemulihan burnout &amp; batas sehat</h3><p>Menata kembali waktu istirahat, batas kerja, dan ruang untuk pemulihan.</p><p class="small muted">Nama dan kredensial: belum tersedia</p></article>
+    </div></div></section>
+    <section class="section reveal" id="ruang-konseling"><div class="container"><hr class="rule">
+      <div class="section-head"><span class="eyebrow">Ruang konseling anonim</span><h2>Bercerita tanpa nama, tanpa jejak</h2><p class="lead">Masuk dengan kode samaran, pilih topik, lalu mulai percakapan privat. Tidak ada akun dan tidak ada data pribadi yang diminta.</p></div>
+      <div class="anon-grid">
+        <div>
+          <ul class="privacy-list">
+            <li><div><h3>Tanpa identitas</h3><p>Tidak ada nama, email, atau nomor HP. Kamu hanya mendapat kode samaran acak yang dibuat di perangkatmu.</p></div></li>
+            <li><div><h3>Pelindung data pengenal</h3><p>Jika pesanmu memuat email, nomor HP, atau tautan, kamu ditawari untuk menyamarkannya sebelum terkirim.</p></div></li>
+            <li><div><h3>Percakapan sementara</h3><p>Pesan hanya ada di layar. Saat kamu keluar atau tidak aktif selama 10 menit, semuanya terhapus.</p></div></li>
+            <li><div><h3>Keluar cepat</h3><p>Satu tombol (atau Esc dua kali) menghapus percakapan dan langsung membawamu kembali ke beranda.</p></div></li>
+            <li><div><h3>Bantuan saat darurat</h3><p>Jika pesanmu menyebut keinginan menyakiti diri, informasi bantuan langsung ditampilkan.</p></div></li>
+          </ul>
+          <p class="small muted" style="margin:24px 0 0">Fitur di atas berjalan di sisi browser pada prototipe ini. Anonimitas penuh di layanan nyata juga membutuhkan server yang tidak mencatat identitas dan alamat pengunjung.</p>
+        </div>
+        <div class="panel room" id="room">
+          <div id="room-start">
+            <p class="small notice" id="room-notice" role="status" tabindex="-1" hidden></p>
+            <h3>Mulai sesi anonim</h3>
+            <form id="room-form" novalidate>
+              <fieldset><legend>Apa yang ingin kamu bicarakan?</legend><div class="options">
+                <label class="option"><input type="radio" name="topik" value="Stres kerja"><span>Stres kerja</span></label><label class="option"><input type="radio" name="topik" value="Batas jam kerja"><span>Batas jam kerja</span></label><label class="option"><input type="radio" name="topik" value="Konflik tim"><span>Konflik tim</span></label><label class="option"><input type="radio" name="topik" value="Masalah pribadi"><span>Masalah pribadi</span></label>
+              </div></fieldset>
+              <div class="code-block"><span class="small muted">Kode samaranmu, dibuat acak di perangkat ini</span><div class="code-row"><strong id="room-code"></strong><button type="button" class="button outline small" id="code-shuffle">Acak ulang</button></div></div>
+              <button class="button" type="submit">Masuk ruang konseling</button>
+              <p class="small error" id="room-error" role="alert" hidden>Pilih satu topik dulu.</p>
+              <p class="hint">Ini simulasi. Belum ada psikolog sungguhan yang terhubung.</p>
+            </form>
+          </div>
+          <div id="room-chat" hidden>
+            <div class="chat-head">
+              <div><span class="small muted">Kode samaran</span><div class="code" id="room-code-chat"></div><span class="pill topic-pill" id="room-topic"></span></div>
+              <div class="chat-tools"><button class="button outline small" type="button" id="room-wipe">Hapus &amp; keluar</button><button class="button outline small danger" type="button" id="room-exit">Keluar cepat</button></div>
+            </div>
+            <p class="sim-note">Mode simulasi: balasan dibuat otomatis untuk memperlihatkan alurnya. Tidak ada psikolog atau orang sungguhan yang membaca pesanmu.</p>
+            <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-label="Percakapan"></div>
+            <p class="small muted typing" id="chat-typing" hidden>Psikolog (simulasi) sedang mengetik…</p>
+            <div class="crisis" id="chat-crisis" role="alert" hidden><strong>Butuh bantuan sekarang?</strong> Hubungi <strong>119 ekstensi 8</strong> (Healing119, layanan Kemenkes) atau kunjungi healing119.id. Jika kamu dalam bahaya langsung, datangi IGD terdekat atau orang yang kamu percaya.</div>
+            <div class="pii-warn" id="chat-pii" hidden><p class="pii-msg" style="margin:0"></p><div class="row"><button type="button" class="button small" data-act="mask">Samarkan otomatis</button><button type="button" class="button outline small" data-act="send">Kirim apa adanya</button><button type="button" class="button outline small" data-act="edit">Ubah pesan</button></div></div>
+            <form class="composer" id="composer"><label class="sr" for="chat-input">Tulis pesanmu</label><textarea id="chat-input" rows="2" maxlength="1500" placeholder="Tulis apa yang ingin kamu ceritakan…"></textarea><button class="button" type="submit">Kirim</button></form>
+            <p class="hint">Hindari menulis nama lengkap, nama perusahaan, atau data pengenal lain. Percakapan terhapus otomatis jika tidak aktif 10 menit. Tekan Esc dua kali untuk keluar cepat.</p>
+          </div>
+        </div>
+      </div>
+    </div></section>
+  </main>
+  <footer class="footer" id="privasi"><div class="container"><div class="footer-grid"><div><span class="pill">Komitmen privasi</span><h2>Privasi adalah bagian dari rasa aman</h2><p>Komitmen yang diajukan MindSpace: data bersifat pribadi dan tidak digunakan untuk penilaian kinerja.</p><p class="small muted">Ini adalah rancangan, bukan jaminan teknis atau kebijakan privasi yang telah diterapkan. Sebelum layanan diluncurkan, pastikan perlindungan data dan alur konseling benar-benar tersedia dan diverifikasi.</p></div><div><span class="eyebrow">Navigasi halaman</span><nav aria-label="Navigasi footer"><a href="#checkin">Check-in Harian</a><a href="#asesmen">Asesmen Mandiri</a><a href="#konseling">Konseling Anonim</a></nav></div></div><div class="footer-bottom small">MindSpace · Ruang untuk menjaga keseimbangan</div></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
